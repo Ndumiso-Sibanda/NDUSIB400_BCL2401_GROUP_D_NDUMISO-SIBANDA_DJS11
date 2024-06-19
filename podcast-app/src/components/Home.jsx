@@ -1,19 +1,19 @@
 import React from 'react';
 
 const Home = () => (
-  <section className="home" id="home">
-    <div className="home-content">
+  <section className="hero" id="hero">
+    <div className="hero-content">
       <img
         src="https://raw.githubusercontent.com/codewithsadee/micro/master/assets/images/hero-title.png"
         alt="Podcast"
-        className="home-title"
+        className="hero-title"
       />
 
-      <p className="home-text">
+      <p className="hero-text">
       Start your podcast journey today and reach millions of listeners worldwide. Share your stories, inspire others, and make an impact with your voice. Join our community and listen to amazing podcasts on the go. Whether you're a seasoned podcaster or just starting out, we have everything you need to succeed. Let's make your podcast dream a reality!
       </p>
 
-      <div className="home-btn-group">
+      <div className="hero-btn-group">
         <button className="btn btn-primary">
           <ion-icon name="headset"></ion-icon>
 
@@ -38,7 +38,7 @@ const Home = () => (
       </div>
     </div>
 
-    <div className="home-banner"></div>
+    <div className="hero-banner"></div>
   </section>
 );
 

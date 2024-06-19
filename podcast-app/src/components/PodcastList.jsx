@@ -1,8 +1,4 @@
-
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import PodcastCard from './PodcastCard';
-import { GENRE_URL, ID_URL, BASE_URL } from '../API';
 
 const PodcastList = () => {
   const [podcasts, setPodcasts] = useState([]);
@@ -10,16 +6,9 @@ const PodcastList = () => {
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
-        // Making multiple requests using Promise.all
-        const responses = await Promise.all([
-          axios.get(GENRE_URL),
-          axios.get(ID_URL),
-          axios.get(BASE_URL)
-        ]);
-
-        // Combine the data from the responses
-        const combinedData = responses.map(response => response.data).flat();
-        setPodcasts(combinedData);
+        const response = await fetch(`https://podcast-api.netlify.app`); 
+        const data = await response.json();
+        setPodcasts(data);
       } catch (error) {
         console.error('Error fetching podcasts:', error);
       }
@@ -31,8 +20,24 @@ const PodcastList = () => {
   return (
     <section className="podcast" id="podcast">
       <ul className="podcast-list">
-        {podcasts.map(podcast => (
-          <PodcastCard key={podcast.id} podcast={podcast} />
+        {podcasts.map((podcast) => (
+          <li key={podcast.id}>
+            <div className="podcast-card">
+              <figure className="card-banner">
+                <img src={podcast.image} alt={podcast.title} />
+                <div className="card-banner-icon">
+                  <ion-icon name="play"></ion-icon>
+                </div>
+              </figure>
+              <div className="card-content">
+                <div className="card-meta">
+                  <time dateTime={podcast.date}>{podcast.date}</time>
+                  <p className="pod-epi">Episodes: {podcast.episodes}</p>
+                </div>
+                <h3 className="h3 card-title">{podcast.title}</h3>
+              </div>
+            </div>
+          </li>
         ))}
       </ul>
     </section>

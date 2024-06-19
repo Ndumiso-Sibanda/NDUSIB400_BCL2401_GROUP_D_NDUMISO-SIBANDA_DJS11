@@ -280,7 +280,7 @@ header .container {
 }
 
 /*-----------------------------------*\
-  #HERO
+  #Home
 \*-----------------------------------*/
 
 .hero {
@@ -331,11 +331,11 @@ header .container {
   transition: background var(--transition);
 }
 
-.hero .btn-link:is(:hover, :focus) {
+.hero.btn-link:is(:hover, :focus) {
   background-size: 100% 2px;
 }
 
-.hero .btn-link {
+.hero.btn-link {
   margin-bottom: 15px;
 }
 
@@ -846,7 +846,7 @@ header .container {
   }
 
   /**
-   * HERO
+   * Home
    */
 
   .hero-content {
@@ -926,7 +926,7 @@ header .container {
   }
 
   /**
-   * HERO
+   * Home
    */
 
   .hero {
