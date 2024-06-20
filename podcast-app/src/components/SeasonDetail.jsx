@@ -15,7 +15,7 @@ const SeasonDetail = () => {
       {season && (
         <div>
           <h3>{season.title}</h3>
-          {/* Display episode list or other season details */}
+        
         </div>
       )}
     </div>

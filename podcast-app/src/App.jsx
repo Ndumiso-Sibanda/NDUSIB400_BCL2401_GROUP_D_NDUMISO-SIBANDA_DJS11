@@ -17,7 +17,9 @@ const App = () => {
         <Route path="/show/:showId" exact element={<ShowDetail />} />
         <Route path="/show/:showId/season/:seasonId" exact element={<SeasonDetail />} />
         <Route path="/favorites" exact element={<Favorites />} />
-        <Route path="/podcast" exact element={<PodcastList />} />
+         <Route path="/podcasts"  element={<PodcastList />} />
+
+         
       </Routes>
       <Footer /> 
     </Router>

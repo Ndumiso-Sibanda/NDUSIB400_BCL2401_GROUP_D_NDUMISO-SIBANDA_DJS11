@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ShowList from './ShowList';
+import { Link } from 'react-router-dom';
+//mport ShowList from './ShowList';
 
 
 
@@ -19,16 +20,16 @@ const Header = () => (
       <nav className="navbar" data-navbar>
         <ul className="navbar-list">
           <li className="navbar-item">
-            <a href="#hero" className="navbar-link">Home</a>
+             <Link to="/" className="navbar-link">Home</Link> 
           </li>
           <li className="navbar-item">
-            <a href="#podcast" className="navbar-link">Podcast</a>
+             <Link to="/podcasts" className="navbar-link">Podcast</Link> 
           </li>
           <li className="navbar-item">
-            <a href="#" className="navbar-link">Host</a>
+             <Link to="/favorites" className="navbar-link">Favorites</Link> 
           </li>
           <li className="navbar-item">
-            <a href="#" className="navbar-link">Blog</a>
+             <Link to="/favorites" className="navbar-link">Genre</Link> 
           </li>
           <li className="navbar-item">
             <a href="#" className="navbar-link">Contact</a>
