@@ -6,6 +6,7 @@ import SeasonDetail from './components/SeasonDetail';
 import Favorites from './components/Favorites';
 import Header from './components/Header';
 import PodcastList from './components/PodcastList';
+import Footer from './components/Footer'; // Import the Footer component here
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/favorites" exact element={<Favorites />} />
         <Route path="/podcast" exact element={<PodcastList />} />
       </Routes>
+      <Footer /> 
     </Router>
   );
 };

@@ -21,7 +21,7 @@ const Home = () => (
         </button>
 
         <div className="btn-link-wrapper">
-          <p className="btn-title">Subscribe On:</p>
+          <p className="btn-title">Follow On:</p>
 
           <a href="https://www.youtube.com/@nduh0656" className="btn-link">
             <ion-icon name="logo-YouTube"></ion-icon>
