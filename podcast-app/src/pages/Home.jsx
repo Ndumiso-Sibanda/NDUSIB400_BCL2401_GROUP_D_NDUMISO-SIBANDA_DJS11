@@ -23,16 +23,16 @@ const Home = () => (
         <div className="btn-link-wrapper">
           <p className="btn-title">Subscribe On:</p>
 
-          <a href="#" className="btn-link">
-            <ion-icon name="logo-apple"></ion-icon>
+          <a href="https://www.youtube.com/@nduh0656" className="btn-link">
+            <ion-icon name="logo-YouTube"></ion-icon>
 
-            <span>Apple Music</span>
+            <span>YouTube</span>
           </a>
 
-          <a href="#" className="btn-link">
-            <ion-icon name="logo-soundcloud"></ion-icon>
+          <a href="https://www.linkedin.com/in/ndumiso-sibanda-304836231/" className="btn-link">
+            <ion-icon name="logo-Linkedin"></ion-icon>
 
-            <span>SoundCloud</span>
+            <span>Linkedin</span>
           </a>
         </div>
       </div>
