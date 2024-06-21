@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonIcon } from 'react-ionicons';
+//import { IonIcon } from 'react-ionicons';
 
 const Footer = () => {
     return (

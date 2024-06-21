@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-//mport ShowList from './ShowList';
+import ShowList from './ShowList';
 
 
 
@@ -29,7 +29,7 @@ const Header = () => (
              <Link to="/favorites" className="navbar-link">Favorites</Link> 
           </li>
           <li className="navbar-item">
-             <Link to="/favorites" className="navbar-link">Genre</Link> 
+             <Link to="/genres" className="navbar-link">Genre</Link> 
           </li>
           <li className="navbar-item">
             <a href="#" className="navbar-link">Contact</a>

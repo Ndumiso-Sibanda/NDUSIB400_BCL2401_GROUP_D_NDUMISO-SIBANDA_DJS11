@@ -977,6 +977,116 @@ header .container {
   .podcast-list {
     grid-template-columns: repeat(4, 1fr);
   }
+/* Style for the genre name */
+h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+/* Style for the list of podcasts */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* Style for the loading message */
+.loading {
+  font-style: italic;
+  color: #666;
+}
+
+/* Style for error message */
+.error {
+  color: red;
+}
+
+/* Style for podcast card */
+.podcast-card {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: #333;
+}
+
+.podcast-card:hover {
+  background-color: #282626;
+}
+
+.card-banner {
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+.card-banner img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 18px;
+  margin: 0;
+}
+
+.card-meta {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Style for the play icon */
+.card-banner-icon {
+  background-color: #333;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .podcast-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-banner {
+    margin-bottom: 8px;
+  }
+
+  .card-content {
+    flex-grow: 1;
+    margin-left: 0;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-meta {
+    font-size: 12px;
+  }
+}
+/** Podcast Details**/
+
+
+
+
 
   /**
    * FOOTER
