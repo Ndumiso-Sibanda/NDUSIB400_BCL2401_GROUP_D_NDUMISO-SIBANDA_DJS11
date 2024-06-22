@@ -30,7 +30,7 @@ const Header = () => (
              <Link to="/favorites" className="navbar-link">Favorites</Link> 
           </li>
           <li className="navbar-item">
-             <Link to="/Genre" className="navbar-link">Genre</Link> 
+             <Link to="/genre" className="navbar-link">Genre</Link> 
           </li>
         </ul>
         <div className="navbar-actions">

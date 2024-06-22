@@ -4,12 +4,10 @@ export const fetchPreview = async () => {
   return response.json();
 };
 
-export const fetchGenre = async (genreId) => {
-  const response = await fetch(`https://podcast-api.netlify.app/genres/${genreId}`);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch genre with ID ${genreId}`);
-  }
-  return await response.json();
+export const fetchGenre = async (id) => {
+  const response = await fetch(`https://podcast-api.netlify.app/genre/${id}`);
+  if (!response.ok) throw new Error('Failed to fetch genre data');
+  return response.json();
 };
 
 export const fetchShow = async (id) => {
@@ -17,6 +15,5 @@ export const fetchShow = async (id) => {
   if (!response.ok) throw new Error(`Failed to fetch show data for id ${id}`);
   return response.json();
 };
-
 
 //https://podcast-api.netlify.app/

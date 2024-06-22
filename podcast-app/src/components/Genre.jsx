@@ -1,20 +1,19 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { fetchGenre } from '../../services/api';
+import { Link } from 'react-router-dom';
 
 const Genre = () => {
   const { genreId } = useParams();
   const [genre, setGenre] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    const fetchGenre = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(`https://podcast-api.netlify.app/genres/${genreId}`);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch genre with ID ${genreId}`);
-        }
-        const data = await response.json();
-        setGenre(data);
+        const genreData = await fetchGenre(genreId);
+        setGenre(genreData);
         setLoading(false);
       } catch (error) {
         console.error(`Error fetching genre with ID ${genreId}:`, error);
@@ -22,8 +21,15 @@ const Genre = () => {
       }
     };
 
-    fetchGenre();
+    fetchData();
   }, [genreId]);
+
+  const addToFavorites = (id) => {
+    const podcastToAdd = genre.shows.find(show => show.id === id);
+    if (podcastToAdd) {
+      setFavorites([...favorites, podcastToAdd]);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -34,12 +40,15 @@ const Genre = () => {
   }
 
   return (
-    <div className="genre">
+    <div>
       <h1>{genre.name} Podcasts</h1>
       <ul>
         {genre.shows.map(show => (
           <li key={show.id}>
-            <a href={`/show/${show.id}`}>{show.title}</a>
+            <Link to={`/show/${show.id}`}>
+              {show.title}
+            </Link>
+            <button onClick={() => addToFavorites(show.id)}>Add to Favorites</button>
           </li>
         ))}
       </ul>
