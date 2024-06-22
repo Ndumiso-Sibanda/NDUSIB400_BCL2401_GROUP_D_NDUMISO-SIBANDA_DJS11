@@ -25,14 +25,12 @@ const Header = () => (
           <li className="navbar-item">
              <Link to="/podcasts" className="navbar-link">Podcast</Link> 
           </li>
+         
           <li className="navbar-item">
              <Link to="/favorites" className="navbar-link">Favorites</Link> 
           </li>
           <li className="navbar-item">
-             <Link to="/genres" className="navbar-link">Genre</Link> 
-          </li>
-          <li className="navbar-item">
-            <a href="#" className="navbar-link">Contact</a>
+             <Link to="/Genre" className="navbar-link">Genre</Link> 
           </li>
         </ul>
         <div className="navbar-actions">

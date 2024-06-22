@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import AudioPlayer from './AudioPlayer';
-//import { fetchShow } from '../services/api'; // Make sure this path is correct based on your project structure
 
 const ShowDetail = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [showDetails, setShowDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,7 +11,11 @@ const ShowDetail = () => {
   useEffect(() => {
     const fetchShowDetails = async () => {
       try {
-        const data = await fetchShow(id); 
+        const response = await fetch(`https://podcast-api.netlify.app/id/${id}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch show data for id ${id}`);
+        }
+        const data = await response.json();
         setShowDetails(data);
         setLoading(false);
       } catch (error) {
@@ -24,11 +26,6 @@ const ShowDetail = () => {
 
     fetchShowDetails();
   }, [id]);
-
-  const handlePlay = (audioUrl) => {
-    setIsPlaying(true);
-    // Logic to play audio (this might need to be implemented in AudioPlayer component)
-  };
 
   if (loading) {
     return <div>Fetching podcast details...</div>;
@@ -54,13 +51,17 @@ const ShowDetail = () => {
             {showDetails.seasons.map((season, index) => (
               <div key={index} className="season">
                 <h3>Season {season.number}</h3>
+
                 <ul>
                   {season.episodes.map((episode) => (
                     <li key={episode.id} className="episode">
                       <h4>{episode.title}</h4>
                       <p>{episode.description}</p>
-                      <button onClick={() => handlePlay(episode.audio)}>Play Audio</button>
-                      {isPlaying && <AudioPlayer src={episode.audio} />}
+                      <AudioPlayer
+                        audioUrl={episode.audio}
+                        title={episode.title}
+                        thumbnail={showDetails.image}
+                      />
                     </li>
                   ))}
                 </ul>

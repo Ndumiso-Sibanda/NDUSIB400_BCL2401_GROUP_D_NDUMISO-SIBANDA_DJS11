@@ -6,8 +6,11 @@ import SeasonDetail from './components/SeasonDetail';
 import Favorites from './components/Favorites';
 import Header from './components/Header';
 import PodcastList from './components/PodcastList';
-import Footer from './components/Footer'; 
+import Footer from './components/Footer';
 import GenreList from './components/GenreList';
+import Genre from './components/Genre';
+
+
 
 const App = () => {
   return (
@@ -18,13 +21,13 @@ const App = () => {
         <Route path="/show/:id" element={<ShowDetail />} />
         <Route path="/show/:showId/season/:seasonId" exact element={<SeasonDetail />} />
         <Route path="/favorites" exact element={<Favorites />} />
-         <Route path="/podcasts"  element={<PodcastList />} />
-       </Routes>
-      <Footer /> 
+        <Route path="/podcasts" element={<PodcastList />} />
+        <Route path="/genres" element={<GenreList />} />
+        <Route path="/genre/:genreId" element={<Genre />} />
+      </Routes>
+      <Footer />
     </Router>
   );
 };
-
-
 
 export default App;

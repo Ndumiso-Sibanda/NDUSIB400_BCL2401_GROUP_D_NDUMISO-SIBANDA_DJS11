@@ -32,9 +32,12 @@ const PodcastList = () => {
                 <img src={podcast.image} alt={podcast.title} />
 
                 <div className="card-banner-icon">
-                <ion-icon name="play"></ion-icon>
+  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M8 5v14l11-7z" fill="currentColor"/>
+  </svg>
+</div>
 
-               </div>
               </figure>
 
               <div className="card-content">

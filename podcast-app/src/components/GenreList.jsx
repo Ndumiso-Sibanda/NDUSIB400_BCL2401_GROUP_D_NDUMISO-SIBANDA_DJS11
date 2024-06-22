@@ -1,35 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const GenreList = () => {
   const [genres, setGenres] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchGenres = async () => {
       try {
-        const response = await fetch(`https://podcast-api.netlify.app/genre/${id}`);
+        const response = await fetch('https://podcast-api.netlify.app/genres');
+        if (!response.ok) {
+          throw new Error('Failed to fetch genres');
+        }
         const data = await response.json();
         setGenres(data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching genres:', error);
+        setLoading(false);
       }
     };
 
     fetchGenres();
   }, []);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <section className="genres" id="genres">
-      <ul className="genre-list">
-        {genres.map((genre) => (
+    <div className="genre-list">
+      <h1>Podcast Genres</h1>
+      <ul>
+        {genres.map(genre => (
           <li key={genre.id}>
-            <a href="" className="genre-card">
-              
-              <h3 className="h3 genre-title">{genre.title}</h3>
-            </a>
+            <Link to={`/genre/${genre.id}`}>{genre.name}</Link>
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   );
 };
 
