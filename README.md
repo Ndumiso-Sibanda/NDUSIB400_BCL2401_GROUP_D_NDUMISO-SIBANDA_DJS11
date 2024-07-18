@@ -15,7 +15,7 @@ Clone the repository: Download the project files from the GitHub repository.
 Navigate to the project directory: Open the project folder in your terminal or command prompt.
 
 Install dependencies:
-Run the necessary commands to install project dependencies.
+Run the necessary commands to install project dependencies. Run using npm install and after installing type npm run dev to view the web application.
 Start the development server: Launch the server to run the application locally.
 
 Open your browser: 
