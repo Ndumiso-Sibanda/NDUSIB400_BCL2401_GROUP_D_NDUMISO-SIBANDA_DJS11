@@ -1,20 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useFavorites } from './FavoriteContext';
+import { Link } from 'react-router-dom';
 
 const Favorites = () => {
-  const [favorites, setFavorites] = useState([]);
+  const { favorites } = useFavorites();
 
-  useEffect(() => {
- 
-  }, []);
+  if (favorites.length === 0) {
+    return <div>No favorites yet!</div>;
+  }
 
   return (
-    <div>
-      <h2>Favorites</h2>
-      <ul>
-        {favorites.map(favorite => (
-          <li key={favorite.id}>{favorite.title}</li>
+    <div className="favorites">
+      <h2>Your Favorite Podcasts</h2>
+      <div className="favorites-list">
+        {favorites.map(podcast => (
+          <div key={podcast.id} className="favorite-item">
+            <Link to={`/show/${podcast.id}`}>
+              <img src={podcast.image} alt={podcast.title} />
+              <h3>{podcast.title}</h3>
+            </Link>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

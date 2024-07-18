@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import AudioPlayer from './AudioPlayer';
+import { useFavorites } from './FavoriteContext';
 
 const ShowDetail = () => {
   const [showDetails, setShowDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { id } = useParams();
+  const { favorites, addFavorite, removeFavorite } = useFavorites();
 
   useEffect(() => {
     const fetchShowDetails = async () => {
@@ -27,6 +29,16 @@ const ShowDetail = () => {
     fetchShowDetails();
   }, [id]);
 
+  const isFavorite = favorites.some(podcast => podcast.id === id);
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      removeFavorite(id);
+    } else {
+      addFavorite({ id, title: showDetails.title, image: showDetails.image });
+    }
+  };
+
   if (loading) {
     return <div>Fetching podcast details...</div>;
   }
@@ -46,12 +58,14 @@ const ShowDetail = () => {
             <p>Seasons: {showDetails.seasons.length}</p>
             <p>Genre: {showDetails.genres.join(', ')}</p>
             <p>Last Updated: {showDetails.updated}</p>
+            <button onClick={handleFavoriteClick}>
+              {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+            </button>
           </div>
           <div className="seasons">
             {showDetails.seasons.map((season, index) => (
               <div key={index} className="season">
                 <h3>Season {season.number}</h3>
-
                 <ul>
                   {season.episodes.map((episode) => (
                     <li key={episode.id} className="episode">
